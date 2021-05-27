@@ -5,11 +5,11 @@
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>YSCloud</Authors>
-    <Description>An helper module that optimize experience with Swagger for .Net Developers</Description>
+    <Description>An helper module that optimize experience with Consul for .Net Developers</Description>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/84885973?s=128</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/yuansicloud/SwaggerExtension</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/yuansicloud/SwaggerExtension</RepositoryUrl>
-    <PackageTags>Swagger .Net</PackageTags>
+    <PackageProjectUrl>https://github.com/yuansicloud/ConsulServiceRegistrationModule</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/yuansicloud/ConsulServiceRegistrationModule</RepositoryUrl>
+    <PackageTags>Consul .Net</PackageTags>
     <Company>YSCloud</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
