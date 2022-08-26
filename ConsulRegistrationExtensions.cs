@@ -47,18 +47,29 @@ namespace ConsulServiceRegistration
                     configuration.Address = new Uri(serviceOptions.ConsulAddress);
                 });
                 // 获取当前服务地址和端口，这里自动获取，也可以配置
-                var features = app.Properties["server.Features"] as FeatureCollection;
+
                 Uri uri = null;
-                var address = features.Get<IServerAddressesFeature>().Addresses?.FirstOrDefault();
-                if (address == null)
+
+                if (app.Properties.ContainsKey("server.Features"))
                 {
-                    // 方便使用命令启用多个服务
-                    uri = new Uri(serviceOptions.BaseUrl);
+                    var features = app.Properties["server.Features"] as FeatureCollection;
+
+                    var address = features.Get<IServerAddressesFeature>().Addresses?.FirstOrDefault();
+                    if (address == null)
+                    {
+                        // 方便使用命令启用多个服务
+                        uri = new Uri(serviceOptions.BaseUrl);
+                    }
+                    else
+                    {
+                        uri = new Uri(address);
+                    }
                 }
                 else
                 {
-                    uri = new Uri(address);
+                    uri = new Uri(serviceOptions.BaseUrl);
                 }
+
                 // 节点服务注册对象
                 var registration = new AgentServiceRegistration()
                 {
@@ -81,7 +92,8 @@ namespace ConsulServiceRegistration
                 // 注册服务
                 consulClient.Agent.ServiceRegister(registration).Wait();
                 // 应用程序终止时，注销服务
-                lifetime.ApplicationStopping.Register(() => {
+                lifetime.ApplicationStopping.Register(() =>
+                {
                     consulClient.Agent.ServiceDeregister(serviceOptions.ServiceId).Wait();
                 });
 
