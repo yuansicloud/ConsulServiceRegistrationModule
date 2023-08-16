@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Consul" Version="1.6.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Consul" Version="1.6.10.9" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.*" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.*" />
     <PackageReference Include="Volo.Abp.AspNetCore" Version="7.3.2" />
